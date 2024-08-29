@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "0b978bd6-6ee2-462b-80e7-2751b27292c0",
+		"name": "Spring Boot Post Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11857275",
+		"_collection_link": "https://grey-trinity-979114.postman.co/workspace/Java-Projects~d9490e89-099f-4666-b92b-782d46e920a5/collection/11857275-0b978bd6-6ee2-462b-80e7-2751b27292c0?action=share&source=collection_link&creator=11857275"
+	},
+	"item": [
+		{
+			"name": "Get post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/users/{{userId}}/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users",
+						"{{userId}}",
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "post_picture",
+							"type": "file",
+							"src": "postman-cloud:///1ef649a9-38b0-4f00-99a8-2c671ba69399"
+						},
+						{
+							"key": "post",
+							"value": "{\n    \"postContent\": \"This is the post content by Maniraj Sivasubbu\",\n    \"hashTags\": [\n        \"#Java\",\n        \"#Spring_Boot\",\n        \"#SQL\"\n    ],\n    \"likedUsers\": [\n        {\n            \"firstName\": \"Maniraj\",\n            \"lastName\": \"Sivasubbu\",\n            \"reaction\": \"LOVE\"\n        },\n        {\n            \"firstName\": \"Ramyavenkat\",\n            \"lastName\": \"Maniraj\",\n            \"reaction\": \"CELEBRATE\"\n        }\n    ],\n    \"comments\": [\n        {\n            \"userId\": 2,\n            \"commentContent\": \"WoW! I'm the first person to comment for this post\",\n            \"likeCount\": 1,\n            \"commentReplies\": [\n                \"Hahaha!\",\n                \"Thanks !\"\n            ]\n        }\n    ]\n}",
+							"contentType": "application/json",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8090/users/{{userId}}/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users",
+						"{{userId}}",
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Posts by User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/users/{{userId}}/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users",
+						"{{userId}}",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "post_picture",
+							"type": "file",
+							"src": "postman-cloud:///1ef65572-6173-4530-9f86-8fd85fb3531d"
+						},
+						{
+							"key": "post",
+							"value": "{\n    \"postContent\": \"This is the post content by Maniraj\",\n    \"hashTags\": [\n        \"#Java\", \"#Spring_Boot\", \"#SQL\"\n    ],\n    \"likedUsers\": [\n        {\n            \"firstName\": \"Maniraj\",\n            \"lastName\": \"Sivasubbu\",\n            \"reaction\": \"LOVE\"\n        },\n        {\n            \"firstName\": \"Ramyavenkat\",\n            \"lastName\": \"Maniraj\",\n            \"reaction\": \"CELEBRATE\"\n        }\n    ],\n    \"comments\": [\n        {\n            \"userId\": 2,\n            \"commentContent\": \"WoW! I'm the first person to comment for this post\",\n            \"likeCount\": 1,\n            \"commentReplies\": [\n                \"Hahaha!\",\n                \"Thanks !\"\n            ]\n        }\n    ]\n}",
+							"contentType": "application/json",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8090/users/{{userId}}/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users",
+						"{{userId}}",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/users/{{userId}}/posts/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users",
+						"{{userId}}",
+						"posts",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": "1"
+		}
+	]
+}

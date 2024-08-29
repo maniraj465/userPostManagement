@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "liked_user_details")
 public class LikedUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "liked_user_id")
     private Long likedUserId;
     private String firstName;

@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "post_comments")
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "comment_id")
     private Long commentId;
     @Column(name = "user_id")
