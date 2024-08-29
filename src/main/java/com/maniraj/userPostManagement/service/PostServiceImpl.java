@@ -48,14 +48,26 @@ public class PostServiceImpl implements PostService {
     @Override
     public Optional<Post> getPost(Long userId, Long postId) {
         // Predicate<? super Post> predicate = post -> post.getPostId().equals(id);
-        return repository.getPostByUserIdAndPostId(userId, postId);
+        Optional<Post> post = repository.getPostByUserIdAndPostId(userId, postId);
+        if (post.isEmpty()) {
+            throw new PostNotFoundException(userId, postId);
+        }
+        else {
+            return post;
+        }
     }
 
     @Override
     public List<Post> getAllPosts(Long userId) {
 //        getPostByUserId
         Predicate<? super Post> filterUserPostsPredicate = post -> post.getUserId().equals(userId);
-        return repository.findAll().stream().filter(filterUserPostsPredicate).collect(Collectors.toList());
+        List<Post> posts = repository.findAll().stream().filter(filterUserPostsPredicate).collect(Collectors.toList());
+        if (posts.isEmpty()) {
+            throw new PostNotFoundException(userId);
+        }
+        else {
+            return posts;
+        }
     }
 
     @Override
@@ -65,7 +77,7 @@ public class PostServiceImpl implements PostService {
             repository.deletePostByUserIdAndPostId(userId, postId);
         }
         else {
-            throw new PostNotFoundException(postId);
+            throw new PostNotFoundException(userId, postId);
         }
     }
 }

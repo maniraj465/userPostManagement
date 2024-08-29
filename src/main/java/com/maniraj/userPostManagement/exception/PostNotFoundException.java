@@ -15,7 +15,11 @@ public class PostNotFoundException extends RuntimeException {
         super(message);
     }
 
-    public PostNotFoundException(Long id) {
-        this("Post not found with postId: " + id);
+    public PostNotFoundException(Long userId) {
+        this("Post not found for userId : " + userId);
+    }
+
+    public PostNotFoundException(Long userId, Long postId) {
+        this("Post not found with userId " +  userId + " and postId: " + postId);
     }
 }
