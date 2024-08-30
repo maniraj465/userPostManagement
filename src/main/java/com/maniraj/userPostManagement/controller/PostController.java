@@ -24,22 +24,19 @@ public class PostController {
         this.service = service;
     }
 
-    @GetMapping
-    @RequestMapping(path = "/greet")
+    @GetMapping(path = "greet")
     public String greeting() {
         Locale local = LocaleContextHolder.getLocale();
         return messageSource.getMessage("hello.message", null, "Hello from Default!", local);
     }
 
-    @PostMapping
-    @RequestMapping(path = "{userId}/posts", consumes = { "multipart/form-data" })
+    @PostMapping(path = "{userId}/posts", consumes = { "multipart/form-data" })
     public ResponseEntity<?> createPost(@RequestPart("post") Post post, @RequestPart("post_picture") MultipartFile post_picture, @PathVariable Long userId) throws IOException {
         service.addPost(post, post_picture, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(post);
     }
 
-    @PutMapping
-    @RequestMapping(path = "{userId}/posts/{postId}", consumes = { "multipart/form-data" })
+    @PutMapping(path = "{userId}/posts/{postId}", consumes = { "multipart/form-data" })
     public ResponseEntity<?> updatePost(@RequestPart("post") Post post, @RequestPart("post_picture") MultipartFile post_picture, @PathVariable Long userId, @PathVariable Long postId) throws IOException {
         service.updatePost(post, post_picture, userId, postId);
         return ResponseEntity.status(HttpStatus.CREATED).body(post);
