@@ -16,10 +16,10 @@ spring:
   mvc:
     log-request-details: true
 
-#  security:
-#    user:
-#      name: maniraj
-#      password: Alliswell@1
+  security:
+    user:
+      name: maniraj
+      password: Alliswell@1
 
 
 #  servlet:
