@@ -1,7 +1,6 @@
 package com.maniraj.userPostManagement.entity;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,13 +12,20 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "user_posts")
+// @JsonIgnoreProperties({"userId", "post_content"}) This class level annotation is used to ignore list of fields in the response - static filtering
+// @JsonFilter annotation is for dynamic filtering.
+//@JsonFilter("PostBeanPostIdFilter")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "post_id")
     private Long postId;
     @Column(name = "user_id")
+    // Change field name in the response - Serialization using Jackson library
+    // @JsonProperty("user_id")
     private Long userId;
+    // This field level annotation is used to ignore particular field in the response (ex:- Password field) - static filtering
+    // @JsonIgnore
     @Column(name = "post_content", length = 6000)
     private String postContent;
     @Lob
@@ -32,5 +38,4 @@ public class Post {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_post_id", referencedColumnName = "post_id")
     private List<Comment> comments;
-
 }
